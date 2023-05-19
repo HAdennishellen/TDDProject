@@ -30,4 +30,19 @@ public class PawnTests {
         System.out.println(new ChessboardWriter().print(game.getBoard()));
 
     }
+    //@TODO more tests
+    @Test
+    public void testMoveOneSquareForwardInEmptySquareShouldBeLegal(){
+        Game game = new GameImpl();
+
+        game.move("e4-e5");
+
+        assertEquals(Player.WHITE, game.getPlayerToMove());
+        ChessPiece piece = game.getBoard().getPieceAt(new Square("e5"));
+        assertEquals(Player.WHITE, piece.getPlayer());
+        assertEquals(PieceType.PAWN, piece.getPieceType());
+
+        System.out.println(new ChessboardWriter().print(game.getBoard()));
+
+    }
 }
