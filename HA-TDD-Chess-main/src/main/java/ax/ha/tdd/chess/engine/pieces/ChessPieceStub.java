@@ -27,6 +27,7 @@ public class ChessPieceStub extends ChessPieceBase {
         return pieceType.getSymbol();
     }
 
+
     @Override
     public boolean canMove(ChessboardImpl chessboard, Square destination) {
         throw new UnsupportedOperationException("canMove has/will not be implemented in stub class");
