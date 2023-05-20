@@ -3,6 +3,7 @@ package ax.ha.tdd.chess.engine;
 import ax.ha.tdd.chess.console.ChessboardWriter;
 import ax.ha.tdd.chess.engine.pieces.ChessPiece;
 import ax.ha.tdd.chess.engine.pieces.PieceType;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -43,6 +44,39 @@ public class PawnTests {
         assertEquals(PieceType.PAWN, piece.getPieceType());
 
         System.out.println(new ChessboardWriter().print(game.getBoard()));
+    }
+    //@TODO more tests
+    @Test
+    public void testMoveOneSquareForwardInOccupiedSquareShouldBeIllegal(){
+        Game game = new GameImpl();
 
+        game.move("e4-e5");
+
+        assertEquals(Player.WHITE, game.getPlayerToMove());
+        ChessPiece piece = game.getBoard().getPieceAt(new Square("e5"));
+        assertEquals(Player.WHITE, piece.getPlayer());
+        assertEquals(PieceType.PAWN, piece.getPieceType());
+
+        System.out.println(new ChessboardWriter().print(game.getBoard()));
+    }
+    //@TODO more tests
+    @Test
+    public void testTakeOpponentPiece(){
+        Game game = new GameImpl();
+
+        game.move("e4-f5");
+
+        assertEquals(Player.WHITE, game.getPlayerToMove());
+        ChessPiece piece = game.getBoard().getPieceAt(new Square("f5"));
+        assertEquals(Player.WHITE, piece.getPlayer());
+        assertEquals(PieceType.PAWN, piece.getPieceType());
+
+        System.out.println(new ChessboardWriter().print(game.getBoard()));
+    }
+
+    @Test
+    public void PawnUpgradeIntoQueen(){
+
+        assertEquals(1,1);
     }
 }
