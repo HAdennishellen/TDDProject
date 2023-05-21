@@ -38,10 +38,10 @@ public class PawnTests {
 
         System.out.println(new ChessboardWriter().print(game.getBoard()));
 
-        game.move("e4-e5");
+        game.move("e2-e3");
 
         assertEquals(Player.WHITE, game.getPlayerToMove());
-        ChessPiece piece = game.getBoard().getPieceAt(new Square("e5"));
+        ChessPiece piece = game.getBoard().getPieceAt(new Square("e3"));
         assertEquals(Player.WHITE, piece.getPlayer());
         assertEquals(PieceType.PAWN, piece.getPieceType());
 

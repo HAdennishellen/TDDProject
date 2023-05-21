@@ -1,5 +1,6 @@
 package ax.ha.tdd.chess.engine.pieces;
 
+import ax.ha.tdd.chess.engine.Chessboard;
 import ax.ha.tdd.chess.engine.ChessboardImpl;
 import ax.ha.tdd.chess.engine.Square;
 import ax.ha.tdd.chess.engine.Player;
@@ -24,18 +25,8 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
     }
 
 
-    /*
-    public int setDirection(Pawn pawn){
-        if(pawn.player.equals(Player.WHITE)){
-            return 1;
-        }
-        if(pawn.player.equals(Player.BLACK)){
-            return -1;
-        }
 
-    }
 
-     */
     public int getDirection(int x, int y){
         int playerDirection;
         if (player == Player.WHITE) {
@@ -73,7 +64,7 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
 
     @Override
     public boolean canMove(ChessboardImpl chessboard, Square destination) {
-        final ChessPiece[][] board;
+        
         int destinationX = destination.getX();
         int destinationY = destination.getY();
         int locationX = location.getX();
@@ -85,14 +76,18 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
         //these variables are for checking if the square is empty
         Square destinationLocation = new Square(destinationX, destinationY);
 
+        checkIfSquareEmpty(destinationLocation, chessboard);
+
+        
+
         //KAN GÅ ETT OCH TVÅ STEG FRAM
         //Must also check if there is a piece in the destination coordinates
         if(destinationX == locationX && destinationY == locationY + getDirection(locationX, locationY)){
-            if(getDirection(locationX, locationY) == 1){
+            if(getDirection(locationX, locationY) == 1 && checkIfSquareEmpty(destinationLocation, chessboard)){
                 return true;
             }
         }
-        else if (destinationX == locationX && locationY == 1){
+        else if (destinationX == locationX && destinationY == locationY + 2 * getDirection(locationX, locationY)){
             if (getDirection(locationX, locationY) == 2){
                 return true;
             }
