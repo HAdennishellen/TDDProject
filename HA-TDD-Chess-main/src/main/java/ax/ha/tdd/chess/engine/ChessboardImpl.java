@@ -35,6 +35,14 @@ public class ChessboardImpl implements Chessboard {
         board[chessPiece.getLocation().getY()][chessPiece.getLocation().getX()] = chessPiece;
     }
 
+    public void removePiece(Square square){
+        int TargetX = square.getX();
+        int TargetY = square.getY();
+
+        board[TargetX][TargetY] = null;
+
+    }
+
     /**
      * Helper method to initialize chessboard with {@link ChessPieceStub}.
      * Basically mirrors all added pieces for both players.

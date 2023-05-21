@@ -36,6 +36,8 @@ public class PawnTests {
     public void testMoveOneSquareForwardInEmptySquareShouldBeLegal(){
         Game game = new GameImpl();
 
+        System.out.println(new ChessboardWriter().print(game.getBoard()));
+
         game.move("e4-e5");
 
         assertEquals(Player.WHITE, game.getPlayerToMove());

@@ -34,4 +34,35 @@ public class GameImpl implements Game{
         isNewGame = false;
         System.out.println("Player tried to perform move: " + move);
     }
-}
+
+
+
+    /*
+    public void move(String move) {
+        isNewGame = false;
+        String[] moveArray = move.split("-");
+        Square startSquare = new Square(moveArray[0]);
+        Square destinationSquare = new Square(moveArray[1]);
+
+        ChessPiece chessPieceStart = board.getPieceAt(startSquare);
+
+        System.out.println("Player tried to perform move with piece: " + chessPieceStart);
+
+        // Check if the chess piece exists and belongs to the current player
+        if (chessPieceStart != null && chessPieceStart.getPlayer() == getPlayerToMove()) {
+            if (chessPieceStart.canMove(destinationSquare)) {
+
+                // Perform the move
+                board.movePiece(startSquare, destinationSquare);
+
+                System.out.println("Player performed move: " + move);
+            } else {
+                System.out.println("Invalid move: " + move);
+            }
+        } else {
+            System.out.println("Invalid piece or not player's turn: " + move);
+        }
+
+     */
+
+    }

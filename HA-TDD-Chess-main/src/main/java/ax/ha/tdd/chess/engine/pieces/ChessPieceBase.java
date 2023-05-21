@@ -33,6 +33,8 @@ public abstract class ChessPieceBase implements ChessPiece {
     }
 
 
+
+
     /**
      * Suggestion of design:
      * Checks if the chessPiece can move to a certain destination.

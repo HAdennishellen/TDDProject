@@ -4,6 +4,8 @@ import ax.ha.tdd.chess.engine.ChessboardImpl;
 import ax.ha.tdd.chess.engine.Square;
 import ax.ha.tdd.chess.engine.Player;
 
+import java.util.Objects;
+
 public class Pawn extends ChessPieceBase implements ChessPiece{
 
     public Pawn(Player player, Square location) {
@@ -50,10 +52,24 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
         }
     }
 
-    public void scanForPices(){
 
+//    public boolean AttackEnemy(Square targetSquare, Chessboard chessboard){
+//        ChessPiece chessPiece = chessboard.getPieceAt(targetSquare);
+//
+//        if(chessPiece != null && chessPiece.getPlayer() !=)
+//    }
+    public boolean checkIfSquareEmpty(Square target, ChessboardImpl chessboard){
+        final ChessPiece chessPiece;
+        chessPiece = chessboard.getPieceAt(target);
 
+        System.out.println(chessPiece.toString());
+
+        if(Objects.equals(chessPiece.toString(), "*")){
+            return true;
+        }
+        else return false;
     }
+
 
     @Override
     public boolean canMove(ChessboardImpl chessboard, Square destination) {
@@ -63,6 +79,10 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
         int locationX = location.getX();
         int locationY = location.getY();
         Square pieceLocation = new Square(locationX,locationY);
+
+
+
+        //these variables are for checking if the square is empty
         Square destinationLocation = new Square(destinationX, destinationY);
 
         //KAN GÅ ETT OCH TVÅ STEG FRAM
