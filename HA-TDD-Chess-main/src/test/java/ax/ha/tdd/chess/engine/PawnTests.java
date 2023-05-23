@@ -2,6 +2,7 @@ package ax.ha.tdd.chess.engine;
 
 import ax.ha.tdd.chess.console.ChessboardWriter;
 import ax.ha.tdd.chess.engine.pieces.ChessPiece;
+import ax.ha.tdd.chess.engine.pieces.Pawn;
 import ax.ha.tdd.chess.engine.pieces.PieceType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -39,9 +40,18 @@ public class PawnTests {
         System.out.println(new ChessboardWriter().print(game.getBoard()));
 
         game.move("e2-e3");
+//        Chessboard chessboard = new ChessboardImpl();
+//        Pawn e2 = new Pawn(Player.WHITE, new Square("e2"));
+
+
+
+        //Assertions.assertTrue(e2.canMove((ChessboardImpl) chessboard,new Square("e3"))));
 
         assertEquals(Player.WHITE, game.getPlayerToMove());
-        ChessPiece piece = game.getBoard().getPieceAt(new Square("e3"));
+        ChessPiece piece = game.getBoard().getPieceAt(new Square("e2"));
+
+        System.out.println(new ChessboardWriter().print(game.getBoard()));
+
         assertEquals(Player.WHITE, piece.getPlayer());
         assertEquals(PieceType.PAWN, piece.getPieceType());
 
@@ -55,7 +65,7 @@ public class PawnTests {
         game.move("e4-e5");
 
         assertEquals(Player.WHITE, game.getPlayerToMove());
-        ChessPiece piece = game.getBoard().getPieceAt(new Square("e5"));
+        ChessPiece piece = game.getBoard().getPieceAt(new Square("e4"));
         assertEquals(Player.WHITE, piece.getPlayer());
         assertEquals(PieceType.PAWN, piece.getPieceType());
 

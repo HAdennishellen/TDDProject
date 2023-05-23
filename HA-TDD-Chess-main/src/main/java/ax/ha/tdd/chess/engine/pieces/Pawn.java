@@ -55,7 +55,7 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
 
         System.out.println(chessPiece.toString());
 
-        if(Objects.equals(chessPiece.toString(), "*")){
+        if(chessPiece == null){
             return true;
         }
         else return false;

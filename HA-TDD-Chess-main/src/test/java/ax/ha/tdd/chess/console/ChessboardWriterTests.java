@@ -76,4 +76,27 @@ public class ChessboardWriterTests {
 
         Assertions.assertEquals(expectedChessboard, new ChessboardWriter().print(chessboard));
     }
+    @Test
+    public void print_fullChessboard_after_removing_a_piece() {
+        final String expectedChessboard=
+                        "B-R  B-K  B-B  B-Q  B-K  B-B  B-K  B-R\n\n" +
+
+                        "B-P  B-P  B-P  B-P  B-P  B-P  B-P  B-P\n\n" +
+
+                        " *    *    *    *    *    *    *    * \n\n" +
+
+                        " *    *    *    *    *    *    *    * \n\n" +
+
+                        " *    *    *    *    *    *    *    * \n\n" +
+
+                        " *    *    *    *    *    *    *    * \n\n" +
+
+                        " *  W-P  W-P  W-P  W-P  W-P  W-P  W-P\n\n" +
+
+                        "W-R  W-K  W-B  W-Q  W-K  W-B  W-K  W-R\n";
+
+        final ChessboardImpl chessboard = ChessboardImpl.startingBoard();
+        chessboard.addPiece(new ChessPieceStub(null, Player.WHITE, new Square(0,6)));
+        Assertions.assertEquals(expectedChessboard, new ChessboardWriter().print(chessboard));
+    }
 }
