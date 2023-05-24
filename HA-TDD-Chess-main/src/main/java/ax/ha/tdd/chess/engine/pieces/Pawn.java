@@ -49,7 +49,7 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
         final ChessPiece chessPiece;
         chessPiece = chessboard.getPieceAt(target);
 
-        System.out.println(chessPiece.toString());
+        //System.out.println(chessPiece.toString());
 
         if(chessPiece == null){
             return true;
@@ -72,15 +72,13 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
             hasMoved = true;
         }
 
-
-
+        System.out.println("HELLO WE HAVE REACHED CAN MOVE");
         //these variables are for checking if the square is empty
         Square destinationLocation = new Square(destinationX, destinationY);
 
         checkIfSquareEmpty(destinationLocation, chessboard);
-
-        
-
+        System.out.println("start coordinates: x = " + locationX + " y = " + locationY);
+        System.out.println("destination coordinates: x = " + destinationX + " y = " + destinationY);
         //KAN GÅ ETT OCH TVÅ STEG FRAM
         //Must also check if there is a piece in the destination coordinates
 
@@ -105,11 +103,7 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
             return true;
         }
 
-
-
         //@todo LOGIKEN ATT ANFALLA PÄJSER BEHÖVS Å
-
-
 
         return false;
     }

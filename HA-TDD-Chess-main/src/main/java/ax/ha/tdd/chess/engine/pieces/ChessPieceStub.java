@@ -30,6 +30,22 @@ public class ChessPieceStub extends ChessPieceBase {
 
     @Override
     public boolean canMove(ChessboardImpl chessboard, Square destination) {
-        throw new UnsupportedOperationException("canMove has/will not be implemented in stub class");
+
+        switch(pieceType) {
+            case PAWN:
+                System.out.println("entering case pawn");
+                Pawn pawnCase = new Pawn(player,location);
+                if (pawnCase.canMove(chessboard,destination)){
+                    return true;
+                }
+                break;
+            case BISHOP:
+                // code block
+                break;
+            default:
+                // code block
+        }
+        return false;
+        //throw new UnsupportedOperationException("canMove has/will not be implemented in stub class");
     }
 }
