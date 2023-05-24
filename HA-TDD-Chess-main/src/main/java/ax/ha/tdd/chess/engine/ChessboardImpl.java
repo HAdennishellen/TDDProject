@@ -39,7 +39,7 @@ public class ChessboardImpl implements Chessboard {
         int TargetX = square.getX();
         int TargetY = square.getY();
 
-        board[TargetX][TargetY] = null;
+        board[TargetY][TargetX] = null;
 
     }
 
