@@ -6,7 +6,7 @@ import javax.print.attribute.standard.Destination;
 
 public class GameImpl implements Game {
 
-     ChessboardImpl board = ChessboardImpl.startingBoard();
+     ChessboardImpl board;
 
     //Feel free to delete this stuff. Just for initial testing.
     boolean isNewGame = true;
@@ -17,11 +17,24 @@ public class GameImpl implements Game {
 
     //We use this constructor to setup appropriate testing boards
     public GameImpl(int value) {
-        board = ChessboardImpl.emptyStartingBoard();
+//        board = ChessboardImpl.emptyStartingBoard();
 
         if(value == 2){
             board = ChessboardImpl.rookTestBoard();
         }
+        else if(value == 3){
+            board = ChessboardImpl.bishopTestBoard();
+        }
+        else if(value == 4){
+            board = ChessboardImpl.knightTestBoard();
+        }
+        else if (value == 5) {
+            board = ChessboardImpl.queenTestBoard();
+        }
+        else if(value == 6){
+            board = ChessboardImpl.kingTestBoard();
+        }
+
 
     }
 
@@ -68,13 +81,13 @@ public class GameImpl implements Game {
                 Pawn pawnCase = new Pawn(getPlayerToMove(), startSquare);
                     if(pawnCase.canMove(board, destinationSquare)){
 
-                    System.out.println("WE SURPASSED THE CANMOVE CHECK HOORAY");
-                    board.addPiece(new ChessPieceStub(chessPieceStart.getPieceType(), getPlayerToMove(), destinationSquare));
+                        System.out.println("WE SURPASSED THE CANMOVE CHECK HOORAY");
+                        board.addPiece(new ChessPieceStub(chessPieceStart.getPieceType(), getPlayerToMove(), destinationSquare));
 
 
-                    board.removePiece(startSquare);
-                    System.out.println("The old square is:" + startSquare.toString());
-                }
+                        board.removePiece(startSquare);
+                        System.out.println("The old square is:" + startSquare.toString());
+                    }
                     if(pawnCase.AttackEnemy(destinationSquare,startSquare,board)){
                         System.out.println("We are going for the attack!");
 
@@ -100,15 +113,45 @@ public class GameImpl implements Game {
                 // code block
                 break;
             case BISHOP:
+                System.out.println("Entering case BISHOP");
+                Bishop bishopCase = new Bishop(getPlayerToMove(), startSquare);
+
+                if(bishopCase.canMove(board,destinationSquare)){
+                    board.removePiece(startSquare);
+                    board.addPiece(new ChessPieceStub(chessPieceStart.getPieceType(),getPlayerToMove(),destinationSquare));
+                }
                 // code block
                 break;
             case QUEEN:
+                System.out.println("Entering case QUEEN");
+                Queen queenCase = new Queen(getPlayerToMove(), startSquare);
+
+                if(queenCase.canMove(board,destinationSquare)){
+                    board.removePiece(startSquare);
+                    board.addPiece(new ChessPieceStub(chessPieceStart.getPieceType(),getPlayerToMove(),destinationSquare));
+                }
                 // code block
                 break;
             case KNIGHT:
+                System.out.println("Entering case KNIGHT");
+                Knight knightCase = new Knight(getPlayerToMove(), startSquare);
+
+                if(knightCase.canMove(board,destinationSquare)){
+                    board.removePiece(startSquare);
+                    board.addPiece(new ChessPieceStub(chessPieceStart.getPieceType(),getPlayerToMove(),destinationSquare));
+                }
                 // code block
                 break;
+            case KING:
+                System.out.println("Entering case KING");
+                King kingCase = new King(getPlayerToMove(), startSquare);
 
+                if(kingCase.canMove(board,destinationSquare)){
+                    board.removePiece(startSquare);
+                    board.addPiece(new ChessPieceStub(chessPieceStart.getPieceType(),getPlayerToMove(),destinationSquare));
+                }
+                // code block
+                break;
             default:
                 // code block
         }
