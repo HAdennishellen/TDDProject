@@ -86,16 +86,18 @@ public class PawnTests {
     @Test
     public void testMoveForwardIntoOccupiedSquareShouldBeIllegal(){
         Game game = new GameImpl();
-
+        game.move("e2-e4");
+        game.move("e4-e5");
+        game.move("e5-e6");
         System.out.println(new ChessboardWriter().print(game.getBoard()));
 
 
 
         assertEquals(Player.WHITE, game.getPlayerToMove());
-        ChessPiece piece = game.getBoard().getPieceAt(new Square("e2"));
+        ChessPiece piece = game.getBoard().getPieceAt(new Square("e6"));
         assertEquals(Player.WHITE, piece.getPlayer());
         assertEquals(PieceType.PAWN, piece.getPieceType());
-        game.move("e2-e3");
+        game.move("e6-e7");
 
         System.out.println(new ChessboardWriter().print(game.getBoard()));
     }
@@ -109,10 +111,31 @@ public class PawnTests {
         game.move("e4-f5");
 
         assertEquals(Player.WHITE, game.getPlayerToMove());
-        ChessPiece piece = game.getBoard().getPieceAt(new Square("f5"));
+        ChessPiece piece = game.getBoard().getPieceAt(new Square("e6"));
         assertEquals(Player.WHITE, piece.getPlayer());
         assertEquals(PieceType.PAWN, piece.getPieceType());
-
+        game.move("e6-f7");
+        System.out.println(new ChessboardWriter().print(game.getBoard()));
+    }
+    @Test
+    public void testCanNotTakeOwnPiece(){
+        Game game = new GameImpl();
+        game.move("f2-f3");
+        assertEquals(Player.WHITE, game.getPlayerToMove());
+        ChessPiece piece = game.getBoard().getPieceAt(new Square("f3"));
+        assertEquals(Player.WHITE, piece.getPlayer());
+        assertEquals(PieceType.PAWN, piece.getPieceType());
+        game.move("e2-f3");
+        System.out.println(new ChessboardWriter().print(game.getBoard()));
+    }
+    @Test
+    public void testCanNotMoveBackwards(){
+        Game game = new GameImpl();
+        assertEquals(Player.WHITE, game.getPlayerToMove());
+        ChessPiece piece = game.getBoard().getPieceAt(new Square("e2"));
+        assertEquals(Player.WHITE, piece.getPlayer());
+        assertEquals(PieceType.PAWN, piece.getPieceType());
+        game.move("e2-e1");
         System.out.println(new ChessboardWriter().print(game.getBoard()));
     }
 

@@ -40,14 +40,27 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
     }
 
 
-//    public boolean AttackEnemy(Square targetSquare, Chessboard chessboard){
-//        ChessPiece chessPiece = chessboard.getPieceAt(targetSquare);
-//
-//        if(chessPiece != null && chessPiece.getPlayer() !=)
-//    }
-    public boolean checkIfSquareEmpty(Square target, ChessboardImpl chessboard){
+    public boolean AttackEnemy(Square targetSquare, Square startSquare, Chessboard chessboard){
+        ChessPiece chessPiece = chessboard.getPieceAt(startSquare);
+        int startX = startSquare.getX();
+        int startY = startSquare.getY();
+        int targetX = targetSquare.getX();
+        int targetY = targetSquare.getY();
+
+        if(Math.abs(targetX - startX) == 1 && targetY == startY + getDirection(startY)){
+            if(chessPiece != null && chessPiece.getPlayer() != chessboard.getPieceAt(targetSquare).getPlayer()){
+                return  true;
+            }
+        }
+        else{
+            System.out.println("we failed the attack check in pawn");
+            return false;
+        }
+        return false;
+    }
+    public boolean checkIfSquareEmpty(Square targetSquare, ChessboardImpl chessboard){
         final ChessPiece chessPiece;
-        chessPiece = chessboard.getPieceAt(target);
+        chessPiece = chessboard.getPieceAt(targetSquare);
 
         //System.out.println(chessPiece.toString());
 
@@ -63,12 +76,12 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
         boolean hasMoved = false;
         int destinationX = destination.getX();
         int destinationY = destination.getY();
-        int locationX = location.getX();
-        int locationY = location.getY();
-        Square pieceLocation = new Square(locationX,locationY);
+        int startX = location.getX();
+        int startY = location.getY();
+        Square pieceLocation = new Square(startX,startY);
 
 
-        if(locationY != 2 && getPlayer() == Player.BLACK|| locationY != 6 && getPlayer() == Player.WHITE){
+        if(startY != 2 && getPlayer() == Player.BLACK|| startY != 6 && getPlayer() == Player.WHITE){
             hasMoved = true;
         }
 
@@ -77,21 +90,21 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
         Square destinationLocation = new Square(destinationX, destinationY);
 
         checkIfSquareEmpty(destinationLocation, chessboard);
-        System.out.println("start coordinates: x = " + locationX + " y = " + locationY);
+        System.out.println("start coordinates: x = " + startX + " y = " + startY);
         System.out.println("destination coordinates: x = " + destinationX + " y = " + destinationY);
         //KAN GÅ ETT OCH TVÅ STEG FRAM
         //Must also check if there is a piece in the destination coordinates
 
 
-        if(destinationX == locationX && destinationY == locationY + getDirection(locationY)){
+        if(destinationX == startX && destinationY == startY + getDirection(startY)){
             System.out.println("move 1 square forward");
-            if(getDirection( locationY) > 0 && checkIfSquareEmpty(destinationLocation, chessboard) || getDirection( locationY) < 0 && checkIfSquareEmpty(destinationLocation, chessboard) ){
+            if(getDirection( startY) > 0 && checkIfSquareEmpty(destinationLocation, chessboard) || getDirection( startY) < 0 && checkIfSquareEmpty(destinationLocation, chessboard) ){
                 System.out.println("move 1 square forward successs");
                 return true;
             }
         }
-        else if (destinationX == locationX && destinationY == locationY + 2 * getDirection(locationY) && !hasMoved){
-            if (getDirection( locationY) > 0 && checkIfSquareEmpty(destinationLocation, chessboard)|| getDirection( locationY) < 0 && checkIfSquareEmpty(destinationLocation, chessboard) ){
+        else if (destinationX == startX && destinationY == startY + 2 * getDirection(startY) && !hasMoved){
+            if (getDirection( startY) > 0 && checkIfSquareEmpty(destinationLocation, chessboard)|| getDirection( startY) < 0 && checkIfSquareEmpty(destinationLocation, chessboard) ){
                 return true;
             }
 
@@ -99,30 +112,15 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
 
         //We must also make sure to check if the piece we are attacking is our piece which in that case = false, or an enemy piece which would be = true
         //We must also check if a piece is actually in the destination coordinates
-        else if((destinationX == locationX + 1 || locationX == locationX - 1) && locationY == destinationY + getDirection(locationY)){
-            return true;
-        }
+//        else if((destinationX == locationX + 1 || locationX == locationX - 1) && locationY == destinationY + getDirection(locationY)){
+//            if(){
+//                return true;
+//            }
+//        }
 
         //@todo LOGIKEN ATT ANFALLA PÄJSER BEHÖVS Å
 
         return false;
     }
 
-    /*
-
-        if(player.equals(Player.WHITE)){
-            if(y == 8){
-                upgradePawn();
-            } else if () {
-
-            }
-        }
-        else if(player.equals(Player.BLACK)){
-            if(y == 1){
-                upgradePawn();
-            }
-
-        }
-        return false;
-     */
 }
