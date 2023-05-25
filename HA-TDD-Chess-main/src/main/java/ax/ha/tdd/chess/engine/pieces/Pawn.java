@@ -120,6 +120,7 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
 
         //@todo LOGIKEN ATT ANFALLA PÄJSER BEHÖVS Å
 
+
         return false;
     }
 

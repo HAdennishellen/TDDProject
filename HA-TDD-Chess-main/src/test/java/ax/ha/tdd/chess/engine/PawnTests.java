@@ -91,8 +91,6 @@ public class PawnTests {
         game.move("e5-e6");
         System.out.println(new ChessboardWriter().print(game.getBoard()));
 
-
-
         assertEquals(Player.WHITE, game.getPlayerToMove());
         ChessPiece piece = game.getBoard().getPieceAt(new Square("e6"));
         assertEquals(Player.WHITE, piece.getPlayer());
@@ -108,7 +106,11 @@ public class PawnTests {
     public void testTakeOpponentPiece(){
         Game game = new GameImpl();
 
-        game.move("e4-f5");
+        game.move("e2-e4");
+        game.move("e4-e5");
+        game.move("e5-e6");
+        System.out.println(new ChessboardWriter().print(game.getBoard()));
+
 
         assertEquals(Player.WHITE, game.getPlayerToMove());
         ChessPiece piece = game.getBoard().getPieceAt(new Square("e6"));
@@ -141,7 +143,19 @@ public class PawnTests {
 
     @Test
     public void PawnUpgradeIntoQueen(){
+        Game game = new GameImpl();
 
-        assertEquals(1,1);
+        game.move("e2-e4");
+        game.move("e4-e5");
+        game.move("e5-e6");
+        game.move("e6-e7");
+        game.move("e7-e8");
+        assertEquals(Player.WHITE, game.getPlayerToMove());
+        ChessPiece piece = game.getBoard().getPieceAt(new Square("f5"));
+        assertEquals(Player.WHITE, piece.getPlayer());
+        assertEquals(PieceType.PAWN, piece.getPieceType());
+
+        System.out.println(new ChessboardWriter().print(game.getBoard()));
+
     }
 }

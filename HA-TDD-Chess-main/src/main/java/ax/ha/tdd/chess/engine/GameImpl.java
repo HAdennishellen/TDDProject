@@ -6,10 +6,24 @@ import javax.print.attribute.standard.Destination;
 
 public class GameImpl implements Game {
 
-    final ChessboardImpl board = ChessboardImpl.startingBoard();
+     ChessboardImpl board = ChessboardImpl.startingBoard();
 
     //Feel free to delete this stuff. Just for initial testing.
     boolean isNewGame = true;
+
+    public GameImpl(){
+        board = ChessboardImpl.startingBoard();
+    }
+
+    //We use this constructor to setup appropriate testing boards
+    public GameImpl(int value) {
+        board = ChessboardImpl.emptyStartingBoard();
+
+        if(value == 2){
+            board = ChessboardImpl.rookTestBoard();
+        }
+
+    }
 
     @Override
     public Player getPlayerToMove() {
@@ -57,17 +71,44 @@ public class GameImpl implements Game {
                     System.out.println("WE SURPASSED THE CANMOVE CHECK HOORAY");
                     board.addPiece(new ChessPieceStub(chessPieceStart.getPieceType(), getPlayerToMove(), destinationSquare));
 
+
                     board.removePiece(startSquare);
                     System.out.println("The old square is:" + startSquare.toString());
-                }else {
+                }
+                    if(pawnCase.AttackEnemy(destinationSquare,startSquare,board)){
+                        System.out.println("We are going for the attack!");
+
+                        board.removePiece(startSquare);
+                        board.removePiece(destinationSquare);
+                        board.addPiece(new ChessPieceStub(chessPieceStart.getPieceType(), getPlayerToMove(), destinationSquare));
+
+                    }
+                    else {
                         System.out.println("We failed the if check");
                     }
                 //set new location for the chesspiece that moved
                 //remove it from it's old one
                 break;
+            case ROOK:
+                System.out.println("Entering case ROOK");
+                Rook rookCase = new Rook(getPlayerToMove(), startSquare);
+
+                if(rookCase.canMove(board,destinationSquare)){
+                    board.removePiece(startSquare);
+                    board.addPiece(new ChessPieceStub(chessPieceStart.getPieceType(),getPlayerToMove(),destinationSquare));
+                }
+                // code block
+                break;
             case BISHOP:
                 // code block
                 break;
+            case QUEEN:
+                // code block
+                break;
+            case KNIGHT:
+                // code block
+                break;
+
             default:
                 // code block
         }

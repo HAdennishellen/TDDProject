@@ -5,7 +5,7 @@ import ax.ha.tdd.chess.engine.ChessboardImpl;
 import ax.ha.tdd.chess.engine.Square;
 import ax.ha.tdd.chess.engine.Player;
 
-public class Rook extends ChessPieceBase implements ChessPiece{
+public class Rook extends ChessPieceBase implements ChessPiece {
 
     public Rook(Player player, Square location) {
         super(PieceType.ROOK, player, location);

@@ -26,6 +26,20 @@ public class ChessboardImpl implements Chessboard {
                 .withMirroredPiece(PieceType.KING, List.of(4), 0);
         return chessboard;
     }
+    public static ChessboardImpl emptyStartingBoard() {
+        final ChessboardImpl chessboard = new ChessboardImpl();
+        return chessboard;
+    }
+    public static ChessboardImpl rookTestBoard(){
+        final ChessboardImpl chessboard = new ChessboardImpl();
+        chessboard.withMirroredPiece(PieceType.ROOK, List.of(0,7), 0)
+                .withMirroredPiece(PieceType.QUEEN, List.of(3), 0);
+
+        //chessboard.addPiece();
+
+        return chessboard;
+    }
+
 
     public ChessPiece getPieceAt(final Square square) {
         return board[square.getY()][square.getX()];
