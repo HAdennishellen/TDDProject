@@ -12,17 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class RookTests {
 
     @Test
-<<<<<<< HEAD
-=======
-    public void testMoveBasic(){
-        //Arrange
-        Game game = new GameImpl();
-        System.out.println(new ChessboardWriter().print(game.getBoard()));
-
-
-    }
-    @Test
->>>>>>> origin/main
     public void TestMoveForward(){
         Game game = new GameImpl(2);
         System.out.println(new ChessboardWriter().print(game.getBoard()));
@@ -97,11 +86,11 @@ public class RookTests {
         ChessPiece piece = game.getBoard().getPieceAt(new Square("a1"));
         assertEquals(Player.WHITE, piece.getPlayer());
         assertEquals(PieceType.ROOK, piece.getPieceType());
-<<<<<<< HEAD
+
         game.move("a1-f1");
-=======
+
         game.move("a1-e1");
->>>>>>> origin/main
+
 
         System.out.println(new ChessboardWriter().print(game.getBoard()));
     }
@@ -127,7 +116,7 @@ public class RookTests {
         ChessPiece piece = game.getBoard().getPieceAt(new Square("a1"));
         assertEquals(Player.WHITE, piece.getPlayer());
         assertEquals(PieceType.ROOK, piece.getPieceType());
-<<<<<<< HEAD
+
         game.move("a1-e1");
 
         System.out.println(new ChessboardWriter().print(game.getBoard()));
@@ -155,9 +144,9 @@ public class RookTests {
         assertEquals(Player.WHITE, piece.getPlayer());
         assertEquals(PieceType.ROOK, piece.getPieceType());
         game.move("a1-e1");
-=======
+
         game.move("a1-d1");
->>>>>>> origin/main
+
 
         System.out.println(new ChessboardWriter().print(game.getBoard()));
     }
