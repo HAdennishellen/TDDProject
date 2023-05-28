@@ -73,7 +73,7 @@ public class BishopTests {
         assertEquals(Player.WHITE, piece.getPlayer());
         assertEquals(PieceType.BISHOP, piece.getPieceType());
         game.move("c1-a3");
-        game.move("a1-e7");
+        game.move("a3-f7");
 
         System.out.println(new ChessboardWriter().print(game.getBoard()));
     }

@@ -17,6 +17,87 @@ public class Queen extends ChessPieceBase implements ChessPiece{
 
     @Override
     public boolean canMove(ChessboardImpl chessboard, Square destination) {
+
+        int destinationX = destination.getX();
+        int destinationY = destination.getY();
+        int startX = location.getX();
+        int startY = location.getY();
+        //USE THIS TO DETERMIN MOVE TYPE
+
+        boolean diagonalMove = moveTypeCheckDiagonal(destination);
+
+
+        //TODO WE NEED TO CHECK IF THE MOVE IS VALID AT ALL BEFORE DOING THE LOGIC STOLEN FROM THE OTHER PIECES!!!1
+
+
+            if(diagonalMove == false) {
+                //do rook logic
+                if (startX == destinationX || startY == destinationY) {
+                    // Check if there are any pieces blocking the path
+                    int xDirection = Integer.compare(destinationX, startX);
+                    int yDirection = Integer.compare(destinationY, startY);
+
+                    int col = startX + xDirection;
+                    int row = startY + yDirection;
+
+                    while (col != destinationX || row != destinationY) {
+                        Square squareToCheck = new Square(col,row);
+
+                        if (chessboard.getPieceAt(squareToCheck) != null) {
+                            // Path is blocked
+                            return false;
+                        }
+                        col += xDirection;
+                        row += yDirection;
+                    }
+                    // Check if the destination square is empty or occupied by an opponent's piece
+                    ChessPiece pieceAtDestination = chessboard.getPieceAt(destination);
+                    return pieceAtDestination == null || !pieceAtDestination.getPlayer().equals(getPlayer());
+                }
+            }
+
+            if(diagonalMove == true){
+                //do bishop logic
+                int row = startX;
+                int col =  startY;
+
+                if(startX != destinationX && startY != destinationY) {
+                    int rowOffset, colOffset;
+                    if (startX < destinationX) {
+                        rowOffset = 1;
+                    } else {
+                        rowOffset = -1;
+                    }
+                    if (startY < destinationY) {
+                        colOffset = 1;
+                    } else {
+                        colOffset = -1;
+                    }
+                    while (row != destinationX && col != destinationY) {
+                        if (!checkIfSquareEmpty(new Square(row, col), chessboard)) {
+                            if (chessboard.getPieceAt(new Square(row, col)) != null && chessboard.getPieceAt(new Square(row, col)).getPlayer() != chessboard.getPieceAt(new Square(row, col)).getPlayer()) {
+                                return true;
+                            }
+                        }
+                        if (startY > startY + colOffset) {
+                            col--;
+                        }
+                        if (startY < startY + colOffset) {
+                            col++;
+                        }
+                        if (startX > startX + rowOffset) {
+                            row--;
+                        }
+                        if (startX < startX + rowOffset) {
+                            row++;
+                        }
+                        if (row == destinationX && col == destinationY) {
+                            return true;
+                        }
+                    }
+                }
+                return true;
+            }
         return false;
     }
 }

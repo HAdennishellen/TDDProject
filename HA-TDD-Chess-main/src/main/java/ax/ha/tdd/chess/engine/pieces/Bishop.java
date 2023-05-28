@@ -56,7 +56,7 @@ public class Bishop extends ChessPieceBase implements ChessPiece{
 
         if(startX != destinationX && startY != destinationY){
             int rowOffset, colOffset;
-            if(startX < destinationX){
+            if(startX < destinationX ){
                 rowOffset = 1;
             }else{
                 rowOffset = -1;
@@ -69,9 +69,9 @@ public class Bishop extends ChessPieceBase implements ChessPiece{
             }
 
             while(row != destinationX && col != destinationY){
-                ChessPiece chessPiece = chessboard.getPieceAt(new Square(row, col));
+
                 if(!checkIfSquareEmpty(new Square(row, col), chessboard)){
-                    if(chessPiece != null && chessPiece.getPlayer() != chessboard.getPieceAt(new Square(destinationX,destinationY)).getPlayer()){
+                    if(chessboard.getPieceAt(new Square(row, col)) != null && chessboard.getPieceAt(new Square(row, col)).getPlayer() != chessboard.getPieceAt(new Square(row, col)).getPlayer()){
                         return true;
                     }else {
                         return false;
@@ -79,14 +79,10 @@ public class Bishop extends ChessPieceBase implements ChessPiece{
 
                 }
 
-                if(row == destinationX && col == destinationY){
-                    return true;
+                if(startY > startY + colOffset ){
+                    col--;
                 }
-                if(startY > startY + colOffset && startX > startX + rowOffset){
-                     row--;
-                     col--;
-                }else {
-                    row++;
+                if(startY < startY + colOffset) {
                     col++;
                 }
             }
