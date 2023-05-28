@@ -117,6 +117,8 @@ public class GameImpl implements Game {
                 Bishop bishopCase = new Bishop(getPlayerToMove(), startSquare);
 
                 if(bishopCase.canMove(board,destinationSquare)){
+
+
                     board.removePiece(startSquare);
                     board.addPiece(new ChessPieceStub(chessPieceStart.getPieceType(),getPlayerToMove(),destinationSquare));
                 }

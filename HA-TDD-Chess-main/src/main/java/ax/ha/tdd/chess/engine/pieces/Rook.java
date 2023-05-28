@@ -38,25 +38,6 @@ public class Rook extends ChessPieceBase implements ChessPiece {
             return true;
         } else return false;
     }
-
-    public boolean AttackEnemy(Square targetSquare, Square startSquare, Chessboard chessboard) {
-        ChessPiece chessPiece = chessboard.getPieceAt(startSquare);
-        int startX = startSquare.getX();
-        int startY = startSquare.getY();
-        int targetX = targetSquare.getX();
-        int targetY = targetSquare.getY();
-
-//        if(Math.abs(targetX - startX) == 1 && targetY == startY + getDirection(startY)){
-//            if(chessPiece != null && chessPiece.getPlayer() != chessboard.getPieceAt(targetSquare).getPlayer()){
-//                return  true;
-//            }
-//        }
-//        else{
-//            System.out.println("we failed the attack check in pawn");
-//            return false;
-//        }
-        return false;
-    }
     @Override
     public boolean canMove(ChessboardImpl chessboard, Square destination) {
         Square currentLocation = getLocation();

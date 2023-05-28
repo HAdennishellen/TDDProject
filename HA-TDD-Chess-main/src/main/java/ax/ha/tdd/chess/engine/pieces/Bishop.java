@@ -61,8 +61,7 @@ public class Bishop extends ChessPieceBase implements ChessPiece{
             }else{
                 rowOffset = -1;
             }
-
-            if(startY < destinationY){
+            if(startY < destinationY ){
                 colOffset = 1;
             }else{
                 colOffset = -1;
@@ -73,10 +72,7 @@ public class Bishop extends ChessPieceBase implements ChessPiece{
                 if(!checkIfSquareEmpty(new Square(row, col), chessboard)){
                     if(chessboard.getPieceAt(new Square(row, col)) != null && chessboard.getPieceAt(new Square(row, col)).getPlayer() != chessboard.getPieceAt(new Square(row, col)).getPlayer()){
                         return true;
-                    }else {
-                        return false;
                     }
-
                 }
 
                 if(startY > startY + colOffset ){
@@ -85,17 +81,18 @@ public class Bishop extends ChessPieceBase implements ChessPiece{
                 if(startY < startY + colOffset) {
                     col++;
                 }
+                if(startX > startX + rowOffset) {
+                    row--;
+                }
+                if (startX < startX + rowOffset) {
+                    row++;
+                }
+
+                if(row == destinationX && col == destinationY){
+                    return true;
+                }
             }
-
         }
-        //check if the path is blocked
-        //while/for något något
-
-        //check if enemy on target square
-            //if enemy do attack
-            //remove piece/addpiece
-
-
         return false;
     }
 }

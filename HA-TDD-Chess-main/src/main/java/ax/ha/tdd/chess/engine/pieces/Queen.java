@@ -15,6 +15,29 @@ public class Queen extends ChessPieceBase implements ChessPiece{
         return null;
     }
 
+    public boolean moveTypeCheckDiagonal(Square destination) {
+
+        int startX = location.getX();
+        int startY = location.getY();
+        int destinationX = destination.getX();
+        int destinationY = destination.getY();
+
+        if(startX != destinationX && startY != destinationY){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkIfSquareEmpty(Square targetSquare, ChessboardImpl chessboard){
+        final ChessPiece chessPiece;
+        chessPiece = chessboard.getPieceAt(targetSquare);
+
+        if(chessPiece == null){
+            return true;
+        }
+        else return false;
+    }
+
     @Override
     public boolean canMove(ChessboardImpl chessboard, Square destination) {
 
