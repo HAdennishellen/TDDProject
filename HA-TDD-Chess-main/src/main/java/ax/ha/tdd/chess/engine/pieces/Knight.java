@@ -17,6 +17,17 @@ public class Knight extends ChessPieceBase implements ChessPiece{
 
     @Override
     public boolean canMove(ChessboardImpl chessboard, Square destination) {
-        return false;
+
+        int deltaX = Math.abs(destination.getX() - getLocation().getX());
+        int deltaY = Math.abs(destination.getY() - getLocation().getY());
+
+
+        if(chessboard.getPieceAt(destination) != null) {
+            if (chessboard.getPieceAt(destination).getPlayer().equals(player)) {
+                return false;
+            }
+        }
+        // Check if the move is "L" shape for the knight
+        return (deltaX == 2 && deltaY == 1) || (deltaX == 1 && deltaY == 2);
     }
 }

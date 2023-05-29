@@ -52,7 +52,6 @@ public class Queen extends ChessPieceBase implements ChessPiece{
 
         //TODO WE NEED TO CHECK IF THE MOVE IS VALID AT ALL BEFORE DOING THE LOGIC STOLEN FROM THE OTHER PIECES!!!1
 
-
             if (diagonalMove == false) {
                 //do rook logic
                 if (startX == destinationX || startY == destinationY) {
@@ -81,6 +80,8 @@ public class Queen extends ChessPieceBase implements ChessPiece{
 
             if (diagonalMove == true) {
                 //do bishop logic
+                System.out.println("going for bishop move as queen");
+
                 int row = startX;
                 int col = startY;
 
@@ -123,7 +124,7 @@ public class Queen extends ChessPieceBase implements ChessPiece{
                         }
                     }
                 }
-                return true;
+                return false;
             }
 //        }
         return false;
