@@ -127,7 +127,7 @@ public class QueenTests {
         assertEquals(Player.WHITE, piece.getPlayer());
         assertEquals(PieceType.QUEEN, piece.getPieceType());
 
-        game.move("d1-f2");
+        game.move("d1-e2");
 
         System.out.println(new ChessboardWriter().print(game.getBoard()));
     }

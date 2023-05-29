@@ -52,43 +52,48 @@ public class Bishop extends ChessPieceBase implements ChessPiece{
 
 
         int row = startX;
-        int col =  startY;
+        int col = startY;
 
-        if(startX != destinationX && startY != destinationY){
+        if (startX != destinationX && startY != destinationY) {
             int rowOffset, colOffset;
-            if(startX < destinationX ){
+            if (startX < destinationX) {
                 rowOffset = 1;
-            }else{
+            } else {
                 rowOffset = -1;
             }
-            if(startY < destinationY ){
+            if (startY < destinationY) {
                 colOffset = 1;
-            }else{
+            } else {
                 colOffset = -1;
             }
 
-            while(row != destinationX && col != destinationY){
+            while (row != destinationX && col != destinationY) {
 
-                if(!checkIfSquareEmpty(new Square(row, col), chessboard)){
-                    if(chessboard.getPieceAt(new Square(row, col)) != null && chessboard.getPieceAt(new Square(row, col)).getPlayer() != chessboard.getPieceAt(new Square(row, col)).getPlayer()){
-                        return true;
+                if (!checkIfSquareEmpty(new Square(row + rowOffset, col + colOffset), chessboard)) {
+
+                    if (chessboard.getPieceAt(new Square(row + rowOffset, col + colOffset)) != null && chessboard.getPieceAt(new Square(row + rowOffset, col + colOffset)).getPlayer() == Player.WHITE) {
+
+                        return false;
                     }
+                    return true;
+
                 }
 
-                if(startY > startY + colOffset ){
+
+                if (startY > startY + colOffset) {
                     col--;
                 }
-                if(startY < startY + colOffset) {
+                if (startY < startY + colOffset) {
                     col++;
                 }
-                if(startX > startX + rowOffset) {
+                if (startX > startX + rowOffset) {
                     row--;
                 }
                 if (startX < startX + rowOffset) {
                     row++;
                 }
 
-                if(row == destinationX && col == destinationY){
+                if (row == destinationX && col == destinationY) {
                     return true;
                 }
             }

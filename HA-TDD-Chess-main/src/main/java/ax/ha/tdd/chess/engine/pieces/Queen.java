@@ -53,7 +53,7 @@ public class Queen extends ChessPieceBase implements ChessPiece{
         //TODO WE NEED TO CHECK IF THE MOVE IS VALID AT ALL BEFORE DOING THE LOGIC STOLEN FROM THE OTHER PIECES!!!1
 
 
-            if(diagonalMove == false) {
+            if (diagonalMove == false) {
                 //do rook logic
                 if (startX == destinationX || startY == destinationY) {
                     // Check if there are any pieces blocking the path
@@ -64,7 +64,7 @@ public class Queen extends ChessPieceBase implements ChessPiece{
                     int row = startY + yDirection;
 
                     while (col != destinationX || row != destinationY) {
-                        Square squareToCheck = new Square(col,row);
+                        Square squareToCheck = new Square(col, row);
 
                         if (chessboard.getPieceAt(squareToCheck) != null) {
                             // Path is blocked
@@ -79,12 +79,12 @@ public class Queen extends ChessPieceBase implements ChessPiece{
                 }
             }
 
-            if(diagonalMove == true){
+            if (diagonalMove == true) {
                 //do bishop logic
                 int row = startX;
-                int col =  startY;
+                int col = startY;
 
-                if(startX != destinationX && startY != destinationY) {
+                if (startX != destinationX && startY != destinationY) {
                     int rowOffset, colOffset;
                     if (startX < destinationX) {
                         rowOffset = 1;
@@ -97,10 +97,14 @@ public class Queen extends ChessPieceBase implements ChessPiece{
                         colOffset = -1;
                     }
                     while (row != destinationX && col != destinationY) {
-                        if (!checkIfSquareEmpty(new Square(row, col), chessboard)) {
-                            if (chessboard.getPieceAt(new Square(row, col)) != null && chessboard.getPieceAt(new Square(row, col)).getPlayer() != chessboard.getPieceAt(new Square(row, col)).getPlayer()) {
-                                return true;
+                        if (!checkIfSquareEmpty(new Square(row + rowOffset, col + colOffset), chessboard)) {
+
+                            if (chessboard.getPieceAt(new Square(row + rowOffset, col + colOffset)) != null && chessboard.getPieceAt(new Square(row + rowOffset, col + colOffset)).getPlayer() == Player.WHITE) {
+
+                                return false;
                             }
+                            return true;
+
                         }
                         if (startY > startY + colOffset) {
                             col--;
@@ -121,6 +125,7 @@ public class Queen extends ChessPieceBase implements ChessPiece{
                 }
                 return true;
             }
+//        }
         return false;
     }
 }
