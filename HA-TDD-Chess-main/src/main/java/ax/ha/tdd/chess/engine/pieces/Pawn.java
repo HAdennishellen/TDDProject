@@ -19,14 +19,6 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
     }
 
 
-    public PieceType upgradePawn(){
-
-        return PieceType.QUEEN;
-    }
-
-
-
-
     public int getDirection( int y){
         int playerDirection;
         if (player == Player.WHITE) {
@@ -53,7 +45,6 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
             }
         }
         else{
-            System.out.println("we failed the attack check in pawn");
             return false;
         }
         return false;
@@ -78,26 +69,18 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
         int startY = location.getY();
         Square pieceLocation = new Square(startX,startY);
 
-
         if(startY != 2 && getPlayer() == Player.BLACK|| startY != 6 && getPlayer() == Player.WHITE){
             hasMoved = true;
         }
 
-        System.out.println("HELLO WE HAVE REACHED CAN MOVE");
+
         //these variables are for checking if the square is empty
         Square destinationLocation = new Square(destinationX, destinationY);
 
         checkIfSquareEmpty(destinationLocation, chessboard);
-        System.out.println("start coordinates: x = " + startX + " y = " + startY);
-        System.out.println("destination coordinates: x = " + destinationX + " y = " + destinationY);
-        //KAN GÅ ETT OCH TVÅ STEG FRAM
-        //Must also check if there is a piece in the destination coordinates
-
 
         if(destinationX == startX && destinationY == startY + getDirection(startY)){
-            System.out.println("move 1 square forward");
             if(getDirection( startY) > 0 && checkIfSquareEmpty(destinationLocation, chessboard) || getDirection( startY) < 0 && checkIfSquareEmpty(destinationLocation, chessboard) ){
-                System.out.println("move 1 square forward successs");
                 return true;
             }
         }
@@ -105,19 +88,8 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
             if (getDirection( startY) > 0 && checkIfSquareEmpty(destinationLocation, chessboard)|| getDirection( startY) < 0 && checkIfSquareEmpty(destinationLocation, chessboard) ){
                 return true;
             }
-
         }
-
-        //We must also make sure to check if the piece we are attacking is our piece which in that case = false, or an enemy piece which would be = true
-        //We must also check if a piece is actually in the destination coordinates
-//        else if((destinationX == locationX + 1 || locationX == locationX - 1) && locationY == destinationY + getDirection(locationY)){
-//            if(){
-//                return true;
-//            }
-//        }
-
         //@todo LOGIKEN ATT ANFALLA PÄJSER BEHÖVS Å
-
 
         return false;
     }

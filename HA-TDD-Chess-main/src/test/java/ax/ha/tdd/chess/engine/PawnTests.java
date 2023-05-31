@@ -145,15 +145,22 @@ public class PawnTests {
     public void PawnUpgradeIntoQueen(){
         Game game = new GameImpl();
 
-        game.move("e2-e4");
-        game.move("e4-e5");
-        game.move("e5-e6");
-        game.move("e6-e7");
-        game.move("e7-e8");
+        game.getBoard().removePiece(new Square("d7"));
+        game.getBoard().removePiece(new Square("d8"));
+
+        game.move("d2-d4");
+        game.move("d4-d5");
+        game.move("d5-d6");
+        game.move("d6-d7");
+        System.out.println(new ChessboardWriter().print(game.getBoard()));
         assertEquals(Player.WHITE, game.getPlayerToMove());
-        ChessPiece piece = game.getBoard().getPieceAt(new Square("f5"));
+        ChessPiece piece = game.getBoard().getPieceAt(new Square("d7"));
         assertEquals(Player.WHITE, piece.getPlayer());
         assertEquals(PieceType.PAWN, piece.getPieceType());
+        game.move("d7-d8");
+        piece = game.getBoard().getPieceAt(new Square("d8"));
+        assertEquals(Player.WHITE, piece.getPlayer());
+        assertEquals(PieceType.QUEEN, piece.getPieceType());
 
         System.out.println(new ChessboardWriter().print(game.getBoard()));
 

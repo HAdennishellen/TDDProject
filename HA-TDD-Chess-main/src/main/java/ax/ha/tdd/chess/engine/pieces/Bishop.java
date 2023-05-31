@@ -54,13 +54,10 @@ public class Bishop extends ChessPieceBase implements ChessPiece{
                 if (!checkIfSquareEmpty(new Square(row + rowOffset, col + colOffset), chessboard)) {
 
                     if (chessboard.getPieceAt(new Square(row + rowOffset, col + colOffset)) != null && chessboard.getPieceAt(new Square(row + rowOffset, col + colOffset)).getPlayer() == Player.WHITE) {
-
                         return false;
                     }
                     return true;
-
                 }
-
 
                 if (startY > startY + colOffset) {
                     col--;

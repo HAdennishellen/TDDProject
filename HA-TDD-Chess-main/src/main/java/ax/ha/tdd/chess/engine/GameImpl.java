@@ -33,6 +33,8 @@ public class GameImpl implements Game {
         }
         else if(value == 6){
             board = ChessboardImpl.kingTestBoard();
+        } else if (value == 7) {
+            board = ChessboardImpl.pawnTestBoard();
         }
 
 
@@ -87,6 +89,14 @@ public class GameImpl implements Game {
 
                         board.removePiece(startSquare);
                         System.out.println("The old square is:" + startSquare.toString());
+                        if(destinationSquare.getY() > 6){
+                            board.removePiece(destinationSquare);
+                            board.addPiece(new ChessPieceStub(PieceType.QUEEN, Player.BLACK, destinationSquare));
+
+                        } else if (destinationSquare.getY() < 1) {
+                            board.removePiece(destinationSquare);
+                            board.addPiece(new ChessPieceStub(PieceType.QUEEN, Player.WHITE, destinationSquare));
+                        }
                     }
                     if(pawnCase.AttackEnemy(destinationSquare,startSquare,board)){
                         System.out.println("We are going for the attack!");

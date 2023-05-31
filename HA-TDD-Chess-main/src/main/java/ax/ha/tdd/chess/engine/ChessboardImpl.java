@@ -26,10 +26,10 @@ public class ChessboardImpl implements Chessboard {
                 .withMirroredPiece(PieceType.KING, List.of(4), 0);
         return chessboard;
     }
-//    public static ChessboardImpl emptyStartingBoard() {
-//        final ChessboardImpl chessboard = new ChessboardImpl();
-//        return chessboard;
-//    }
+    public static ChessboardImpl emptyStartingBoard() {
+        final ChessboardImpl chessboard = new ChessboardImpl();
+        return chessboard;
+    }
     public static ChessboardImpl bishopTestBoard(){
         final ChessboardImpl chessboard = new ChessboardImpl();
         chessboard.withMirroredPiece(PieceType.BISHOP, List.of(2,5), 0)
@@ -56,8 +56,17 @@ public class ChessboardImpl implements Chessboard {
     }
     public static ChessboardImpl kingTestBoard(){
         final ChessboardImpl chessboard = new ChessboardImpl();
-        chessboard.withMirroredPiece(PieceType.PAWN, List.of(0,1,2,3,5,6,7), 1)
-                .withMirroredPiece(PieceType.KING, List.of(4), 0);
+        chessboard.withMirroredPiece(PieceType.PAWN, List.of(0,1,2,3,4,5,6,7), 1)
+                .withMirroredPiece(PieceType.ROOK, List.of(0,7), 0)
+                .withMirroredPiece(PieceType.KNIGHT, List.of(1,6), 0)
+                .withMirroredPiece(PieceType.BISHOP, List.of(2,5), 0)
+                .withMirroredPiece(PieceType.QUEEN, List.of(3), 0);
+        return chessboard;
+    }
+    public static ChessboardImpl pawnTestBoard(){
+        final ChessboardImpl chessboard = new ChessboardImpl();
+        chessboard.withMirroredPiece(PieceType.PAWN, List.of(0,1,2,4,5,6,7), 1);
+
         return chessboard;
     }
 
