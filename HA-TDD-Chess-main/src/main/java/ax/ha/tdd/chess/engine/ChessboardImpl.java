@@ -111,4 +111,10 @@ public class ChessboardImpl implements Chessboard {
     public Iterator<ChessPiece[]> iterator() {
         return List.of(board).iterator();
     }
+
+    public int GetSize(){
+        return board.length;
+
+    }
+
 }
