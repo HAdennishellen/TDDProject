@@ -59,7 +59,6 @@ public class GameImpl implements Game {
 
     @Override
     public void move(String move) {
-        //TODO this should trigger your move logic.
         isNewGame = false;
         ChessPieceBase chessPieceStart;
         String[] moveArray = move.split("-");
@@ -85,6 +84,7 @@ public class GameImpl implements Game {
                         if(destinationSquare.getY() > 6){
                             board.removePiece(destinationSquare);
                             board.addPiece(new ChessPieceStub(PieceType.QUEEN, Player.BLACK, destinationSquare));
+
 
                         } else if (destinationSquare.getY() < 1) {
                             board.removePiece(destinationSquare);
