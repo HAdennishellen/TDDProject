@@ -39,8 +39,9 @@ public class King extends ChessPieceBase implements ChessPiece {
                 chessboard.removePiece(location);
                 chessboard.addPiece(new ChessPieceStub(PieceType.KING, getPlayer(), destination));
 
+
                 //do the actual check
-                boolean dangerCheck = checkForCheck(chessboard, getPlayer());
+                boolean dangerCheck = checkForCheck(chessboard, getPlayer(),destination);
 
                 if(dangerCheck == false){
 
@@ -50,7 +51,7 @@ public class King extends ChessPieceBase implements ChessPiece {
                 }
                 else{
                     chessboard.removePiece(destination);
-                    chessboard.addPiece(tempPiece);
+                    chessboard.addPiece(new ChessPieceStub(PieceType.KING, getPlayer(), location));
                     return false;
                 }
             }
@@ -58,9 +59,8 @@ public class King extends ChessPieceBase implements ChessPiece {
         return false;
     }
 
-    public boolean checkForCheck(ChessboardImpl chessboard, Player currentPlayer) {
+    public boolean checkForCheck(ChessboardImpl chessboard, Player currentPlayer, Square HypotheticalKingSquare) {
 
-        Square kingSquare = getLocation();
         int boardSize = chessboard.GetSize();
 
 
@@ -68,8 +68,6 @@ public class King extends ChessPieceBase implements ChessPiece {
             for (int col = 0; col < boardSize; col++) {
                 Square currentSquare = new Square(row, col);
 
-                ChessPieceStub currentPiece = new ChessPieceStub(getPieceType(),getPlayer(),currentSquare);
-                System.out.println(currentPiece.getPieceType());
 
                 // Check if the current piece exists and belongs to the opponent
                 if (currentPiece != null && currentPiece.getPlayer() != currentPlayer) {

@@ -45,12 +45,9 @@ public class Queen extends ChessPieceBase implements ChessPiece{
         int destinationY = destination.getY();
         int startX = location.getX();
         int startY = location.getY();
-        //USE THIS TO DETERMIN MOVE TYPE
+        //USE THIS TO DETERMINE MOVE TYPE
 
         boolean diagonalMove = moveTypeCheckDiagonal(destination);
-
-
-        //TODO WE NEED TO CHECK IF THE MOVE IS VALID AT ALL BEFORE DOING THE LOGIC STOLEN FROM THE OTHER PIECES!!!1
 
             if (diagonalMove == false) {
                 //do rook logic
@@ -80,8 +77,6 @@ public class Queen extends ChessPieceBase implements ChessPiece{
 
             if (diagonalMove == true) {
                 //do bishop logic
-                System.out.println("going for bishop move as queen");
-
                 int row = startX;
                 int col = startY;
 

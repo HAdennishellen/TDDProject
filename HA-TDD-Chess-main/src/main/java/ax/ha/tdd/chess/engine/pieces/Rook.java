@@ -57,9 +57,9 @@ public class Rook extends ChessPieceBase implements ChessPiece {
             int row = startY + yDirection;
 
             while (col != destinationX || row != destinationY) {
-                Square squaretocheck = new Square(col,row);
+                Square squareToCheck = new Square(col,row);
 
-                if (chessboard.getPieceAt(squaretocheck) != null) {
+                if (chessboard.getPieceAt(squareToCheck) != null) {
                     // Path is blocked
                     return false;
                 }

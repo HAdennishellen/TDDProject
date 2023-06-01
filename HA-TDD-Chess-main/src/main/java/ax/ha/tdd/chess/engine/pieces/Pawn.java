@@ -18,7 +18,6 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
         return null;
     }
 
-
     public int getDirection( int y){
         int playerDirection;
         if (player == Player.WHITE) {
@@ -30,7 +29,6 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
             return playerDirection = 1; // Forward direction for black player
         }
     }
-
 
     public boolean AttackEnemy(Square targetSquare, Square startSquare, Chessboard chessboard){
         ChessPiece chessPiece = chessboard.getPieceAt(startSquare);
@@ -59,7 +57,6 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
         else return false;
     }
 
-
     @Override
     public boolean canMove(ChessboardImpl chessboard, Square destination) {
         boolean hasMoved = false;
@@ -72,7 +69,6 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
         if(startY != 2 && getPlayer() == Player.BLACK|| startY != 6 && getPlayer() == Player.WHITE){
             hasMoved = true;
         }
-
 
         //these variables are for checking if the square is empty
         Square destinationLocation = new Square(destinationX, destinationY);
@@ -89,8 +85,6 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
                 return true;
             }
         }
-        //@todo LOGIKEN ATT ANFALLA PÄJSER BEHÖVS Å
-
         return false;
     }
 

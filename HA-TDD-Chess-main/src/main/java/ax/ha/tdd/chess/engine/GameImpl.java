@@ -2,22 +2,19 @@ package ax.ha.tdd.chess.engine;
 
 import ax.ha.tdd.chess.engine.pieces.*;
 
-import javax.print.attribute.standard.Destination;
-
 public class GameImpl implements Game {
 
-     ChessboardImpl board;
+    ChessboardImpl board;
 
-    //Feel free to delete this stuff. Just for initial testing.
+    //Feel free to delete this stuff, Just for initial testing.
     boolean isNewGame = true;
 
     public GameImpl(){
         board = ChessboardImpl.startingBoard();
     }
 
-    //We use this constructor to setup appropriate testing boards
+    //We use this constructor to set up appropriate testing boards
     public GameImpl(int value) {
-//        board = ChessboardImpl.emptyStartingBoard();
 
         if(value == 2){
             board = ChessboardImpl.rookTestBoard();
@@ -33,11 +30,10 @@ public class GameImpl implements Game {
         }
         else if(value == 6){
             board = ChessboardImpl.kingTestBoard();
-        } else if (value == 7) {
+        }
+        else if (value == 7) {
             board = ChessboardImpl.pawnTestBoard();
         }
-
-
     }
 
     @Override
@@ -79,13 +75,10 @@ public class GameImpl implements Game {
 
         switch (chessPieceStart.getPieceType()) {
             case PAWN:
-                System.out.println("Entering case PAWN in GAME IMLP");
                 Pawn pawnCase = new Pawn(getPlayerToMove(), startSquare);
                     if(pawnCase.canMove(board, destinationSquare)){
 
-                        System.out.println("WE SURPASSED THE CANMOVE CHECK HOORAY");
                         board.addPiece(new ChessPieceStub(chessPieceStart.getPieceType(), getPlayerToMove(), destinationSquare));
-
 
                         board.removePiece(startSquare);
                         System.out.println("The old square is:" + startSquare.toString());
@@ -99,31 +92,22 @@ public class GameImpl implements Game {
                         }
                     }
                     if(pawnCase.AttackEnemy(destinationSquare,startSquare,board)){
-                        System.out.println("We are going for the attack!");
 
                         board.removePiece(startSquare);
                         board.removePiece(destinationSquare);
                         board.addPiece(new ChessPieceStub(chessPieceStart.getPieceType(), getPlayerToMove(), destinationSquare));
 
                     }
-                    else {
-                        System.out.println("We failed the if check");
-                    }
-                //set new location for the chesspiece that moved
-                //remove it from it's old one
                 break;
             case ROOK:
-                System.out.println("Entering case ROOK");
                 Rook rookCase = new Rook(getPlayerToMove(), startSquare);
 
                 if(rookCase.canMove(board,destinationSquare)){
                     board.removePiece(startSquare);
                     board.addPiece(new ChessPieceStub(chessPieceStart.getPieceType(),getPlayerToMove(),destinationSquare));
                 }
-                // code block
                 break;
             case BISHOP:
-                System.out.println("Entering case BISHOP");
                 Bishop bishopCase = new Bishop(getPlayerToMove(), startSquare);
 
                 if(bishopCase.canMove(board,destinationSquare)){
@@ -132,20 +116,16 @@ public class GameImpl implements Game {
                     board.removePiece(startSquare);
                     board.addPiece(new ChessPieceStub(chessPieceStart.getPieceType(),getPlayerToMove(),destinationSquare));
                 }
-                // code block
                 break;
             case QUEEN:
-                System.out.println("Entering case QUEEN");
                 Queen queenCase = new Queen(getPlayerToMove(), startSquare);
 
                 if(queenCase.canMove(board,destinationSquare)){
                     board.removePiece(startSquare);
                     board.addPiece(new ChessPieceStub(chessPieceStart.getPieceType(),getPlayerToMove(),destinationSquare));
                 }
-                // code block
                 break;
             case KNIGHT:
-                System.out.println("Entering case KNIGHT");
                 Knight knightCase = new Knight(getPlayerToMove(), startSquare);
 
                 if(knightCase.canMove(board,destinationSquare)){
@@ -155,17 +135,15 @@ public class GameImpl implements Game {
                 // code block
                 break;
             case KING:
-                System.out.println("Entering case KING");
                 King kingCase = new King(getPlayerToMove(), startSquare);
 
                 if(kingCase.canMove(board,destinationSquare)){
                     board.removePiece(startSquare);
                     board.addPiece(new ChessPieceStub(chessPieceStart.getPieceType(),getPlayerToMove(),destinationSquare));
                 }
-                // code block
                 break;
             default:
-                // code block
+                //here we should update the player to play etc. etc. if the move logic passed
         }
     }
 }

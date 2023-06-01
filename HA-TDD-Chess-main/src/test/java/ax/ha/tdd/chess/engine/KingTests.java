@@ -171,14 +171,15 @@ public class KingTests {
         ChessboardImpl board = ChessboardImpl.emptyStartingBoard();
         King king = new King(Player.WHITE, new Square("e1"));
         board.addPiece(new ChessPieceStub(PieceType.KING, Player.WHITE, new Square("e1")));
-        board.addPiece(new ChessPieceStub(PieceType.ROOK, Player.BLACK, new Square("e3")));
+        board.addPiece(new ChessPieceStub(PieceType.ROOK, Player.BLACK, new Square("f3")));
         System.out.println(new ChessboardWriter().print(board)+"\n");
 
         assertEquals(Player.WHITE, board.getPieceAt(new Square("e1")).getPlayer());
         ChessPiece piece = board.getPieceAt(new Square("e1"));
         assertEquals(Player.WHITE, piece.getPlayer());
         assertEquals(PieceType.KING, piece.getPieceType());
-        assertTrue(king.canMove(board, new Square("f1")));
+
+        assertFalse(king.canMove(board, new Square("f1")));
         System.out.println(new ChessboardWriter().print(board));
     }
     @Test
