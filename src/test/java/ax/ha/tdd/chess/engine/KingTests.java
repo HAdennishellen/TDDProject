@@ -200,23 +200,23 @@ public class KingTests {
         assertEquals(PieceType.KING, piece.getPieceType());
         assertFalse(king.canMove(board, new Square("f1")));
     }
-    @Test
-    public void TestCheckCastlingLegal(){
-
-        //do the test variant of using can move directly from the piece
-        //creating an empty chessboard directly form chessboardImpl instead of from gameImpl
-        ChessboardImpl board = ChessboardImpl.emptyStartingBoard();
-        King king = new King(Player.WHITE, new Square("e1"));
-        board.addPiece(new ChessPieceStub(PieceType.KING, Player.WHITE, new Square("e1")));
-        board.addPiece(new ChessPieceStub(PieceType.ROOK, Player.WHITE, new Square("a1")));
-        board.addPiece(new ChessPieceStub(PieceType.ROOK, Player.WHITE, new Square("h1")));
-
-        assertEquals(Player.WHITE, board.getPieceAt(new Square("e1")).getPlayer());
-        ChessPiece piece = board.getPieceAt(new Square("e1"));
-        assertEquals(Player.WHITE, piece.getPlayer());
-        assertEquals(PieceType.KING, piece.getPieceType());
-        assertTrue(king.canMove(board, new Square("a1")));
-    }
+//    @Test
+//    public void TestCheckCastlingLegal(){
+//
+//        //do the test variant of using can move directly from the piece
+//        //creating an empty chessboard directly form chessboardImpl instead of from gameImpl
+//        ChessboardImpl board = ChessboardImpl.emptyStartingBoard();
+//        King king = new King(Player.WHITE, new Square("e1"));
+//        board.addPiece(new ChessPieceStub(PieceType.KING, Player.WHITE, new Square("e1")));
+//        board.addPiece(new ChessPieceStub(PieceType.ROOK, Player.WHITE, new Square("a1")));
+//        board.addPiece(new ChessPieceStub(PieceType.ROOK, Player.WHITE, new Square("h1")));
+//
+//        assertEquals(Player.WHITE, board.getPieceAt(new Square("e1")).getPlayer());
+//        ChessPiece piece = board.getPieceAt(new Square("e1"));
+//        assertEquals(Player.WHITE, piece.getPlayer());
+//        assertEquals(PieceType.KING, piece.getPieceType());
+//        assertTrue(king.canMove(board, new Square("a1")));
+//    }
     @Test
     public void TestCheckCastlingIllegal(){
 

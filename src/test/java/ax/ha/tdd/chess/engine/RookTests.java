@@ -53,14 +53,14 @@ public class RookTests {
     @Test
     public void TestMoveRight(){
         Game game = new GameImpl(2);
-        game.move("h1-e1");
+        game.move("h1-f1");
         System.out.println(new ChessboardWriter().print(game.getBoard()));
 
         assertEquals(Player.WHITE, game.getPlayerToMove());
-        ChessPiece piece = game.getBoard().getPieceAt(new Square("e1"));
+        ChessPiece piece = game.getBoard().getPieceAt(new Square("f1"));
         assertEquals(Player.WHITE, piece.getPlayer());
         assertEquals(PieceType.ROOK, piece.getPieceType());
-        game.move("e1-h1");
+        game.move("f1-h1");
 
         System.out.println(new ChessboardWriter().print(game.getBoard()));
     }
