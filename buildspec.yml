@@ -3,15 +3,17 @@ env:
   variables:
     JAVA_HOME: "/usr/lib/jvm/java-17-amazon-corretto"
 phases:
-    install:
-        commands:
-            - yum install java-17-amazon-corretto-devel -y
-            - update-alternatives --auto javac
-            - update-alternatives --auto java
-            - ls /usr/lib/jvm
-    build:
-        commands:
-            - mvn test package
+  install:
+    runtime-versions:
+    java: openjdk8
+    commands:
+      - yum install java-17-amazon-corretto-devel -y
+      - update-alternatives --auto javac
+      - update-alternatives --auto java
+      - ls /usr/lib/jvm
+  build:
+    commands:
+      - mvn test package
 artifacts:
   files:
     - appspec.yml
