@@ -200,6 +200,7 @@ public class KingTests {
         assertEquals(PieceType.KING, piece.getPieceType());
         assertFalse(king.canMove(board, new Square("f1")));
     }
+    /*
     @Test
     public void TestCheckCastlingLegal(){
 
@@ -217,10 +218,10 @@ public class KingTests {
         assertEquals(PieceType.KING, piece.getPieceType());
         assertTrue(king.canMove(board, new Square("a1")));
     }
-    /*
+
+     */
     @Test
     public void TestCheckCastlingIllegal(){
-
         //do the test variant of using can move directly from the piece
         //creating an empty chessboard directly form chessboardImpl instead of from gameImpl
         ChessboardImpl board = ChessboardImpl.kingTestBoard();
@@ -233,10 +234,6 @@ public class KingTests {
         assertEquals(PieceType.KING, piece.getPieceType());
         assertFalse(king.canMove(board, new Square("a1")));
     }
-
-     */
-
-
 
 
 }
