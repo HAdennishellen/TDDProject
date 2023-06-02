@@ -5,7 +5,7 @@ env:
 phases:
   install:
     runtime-versions:
-    java: openjdk8
+      java: openjdk8
     commands:
       - yum install java-17-amazon-corretto-devel -y
       - update-alternatives --auto javac
