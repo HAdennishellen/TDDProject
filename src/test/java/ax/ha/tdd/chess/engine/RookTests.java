@@ -21,7 +21,9 @@ public class RookTests {
         assertEquals(Player.WHITE, piece.getPlayer());
         assertEquals(PieceType.ROOK, piece.getPieceType());
         game.move("a1-a5");
-
+        ChessPiece piece2 = game.getBoard().getPieceAt(new Square("a5"));
+        assertEquals(Player.WHITE, piece2.getPlayer());
+        assertEquals(PieceType.ROOK, piece2.getPieceType());
         System.out.println(new ChessboardWriter().print(game.getBoard()));
     }
     @Test
@@ -34,6 +36,9 @@ public class RookTests {
         assertEquals(Player.WHITE, piece.getPlayer());
         assertEquals(PieceType.ROOK, piece.getPieceType());
         game.move("a5-a1");
+        ChessPiece piece2 = game.getBoard().getPieceAt(new Square("a1"));
+        assertEquals(Player.WHITE, piece2.getPlayer());
+        assertEquals(PieceType.ROOK, piece2.getPieceType());
 
         System.out.println(new ChessboardWriter().print(game.getBoard()));
     }
@@ -46,7 +51,10 @@ public class RookTests {
         ChessPiece piece = game.getBoard().getPieceAt(new Square("h1"));
         assertEquals(Player.WHITE, piece.getPlayer());
         assertEquals(PieceType.ROOK, piece.getPieceType());
-        game.move("h1-e1");
+        game.move("h1-f1");
+        ChessPiece piece2 = game.getBoard().getPieceAt(new Square("f1"));
+        assertEquals(Player.WHITE, piece2.getPlayer());
+        assertEquals(PieceType.ROOK, piece2.getPieceType());
 
         System.out.println(new ChessboardWriter().print(game.getBoard()));
     }
@@ -61,6 +69,9 @@ public class RookTests {
         assertEquals(Player.WHITE, piece.getPlayer());
         assertEquals(PieceType.ROOK, piece.getPieceType());
         game.move("f1-h1");
+        ChessPiece piece2 = game.getBoard().getPieceAt(new Square("h1"));
+        assertEquals(Player.WHITE, piece2.getPlayer());
+        assertEquals(PieceType.ROOK, piece2.getPieceType());
 
         System.out.println(new ChessboardWriter().print(game.getBoard()));
     }
@@ -74,6 +85,9 @@ public class RookTests {
         assertEquals(Player.WHITE, piece.getPlayer());
         assertEquals(PieceType.ROOK, piece.getPieceType());
         game.move("a1-b2");
+        ChessPiece piece2 = game.getBoard().getPieceAt(new Square("a1"));
+        assertEquals(Player.WHITE, piece2.getPlayer());
+        assertEquals(PieceType.ROOK, piece2.getPieceType());
 
         System.out.println(new ChessboardWriter().print(game.getBoard()));
     }
@@ -88,8 +102,9 @@ public class RookTests {
         assertEquals(PieceType.ROOK, piece.getPieceType());
 
         game.move("a1-f1");
-
-        game.move("a1-e1");
+        ChessPiece piece2 = game.getBoard().getPieceAt(new Square("a1"));
+        assertEquals(Player.WHITE, piece2.getPlayer());
+        assertEquals(PieceType.ROOK, piece2.getPieceType());
 
 
         System.out.println(new ChessboardWriter().print(game.getBoard()));
@@ -104,6 +119,9 @@ public class RookTests {
         assertEquals(Player.WHITE, piece.getPlayer());
         assertEquals(PieceType.ROOK, piece.getPieceType());
         game.move("a1-a8");
+        ChessPiece piece2 = game.getBoard().getPieceAt(new Square("a8"));
+        assertEquals(Player.WHITE, piece2.getPlayer());
+        assertEquals(PieceType.ROOK, piece2.getPieceType());
 
         System.out.println(new ChessboardWriter().print(game.getBoard()));
     }
@@ -118,6 +136,9 @@ public class RookTests {
         assertEquals(PieceType.ROOK, piece.getPieceType());
 
         game.move("a1-e1");
+        ChessPiece piece2 = game.getBoard().getPieceAt(new Square("a1"));
+        assertEquals(Player.WHITE, piece2.getPlayer());
+        assertEquals(PieceType.ROOK, piece2.getPieceType());
 
         System.out.println(new ChessboardWriter().print(game.getBoard()));
     }
@@ -131,7 +152,9 @@ public class RookTests {
         assertEquals(Player.WHITE, piece.getPlayer());
         assertEquals(PieceType.ROOK, piece.getPieceType());
         game.move("a1-e1");
-
+        ChessPiece piece2 = game.getBoard().getPieceAt(new Square("a1"));
+        assertEquals(Player.WHITE, piece2.getPlayer());
+        assertEquals(PieceType.ROOK, piece2.getPieceType());
         System.out.println(new ChessboardWriter().print(game.getBoard()));
     }
     @Test
@@ -143,9 +166,11 @@ public class RookTests {
         ChessPiece piece = game.getBoard().getPieceAt(new Square("a1"));
         assertEquals(Player.WHITE, piece.getPlayer());
         assertEquals(PieceType.ROOK, piece.getPieceType());
-        game.move("a1-e1");
 
-        game.move("a1-d1");
+        game.move("a1-c1");
+        ChessPiece piece2 = game.getBoard().getPieceAt(new Square("c1"));
+        assertEquals(Player.WHITE, piece2.getPlayer());
+        assertEquals(PieceType.ROOK, piece2.getPieceType());
 
 
         System.out.println(new ChessboardWriter().print(game.getBoard()));
